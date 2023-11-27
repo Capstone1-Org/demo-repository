@@ -31,10 +31,10 @@ public class FitnessData {
                 Course course = getCourseById(course_id);
                 String training_goals = resultSetExercise.getString("training_goals");
                 String training_history = resultSetExercise.getString("training_history");
-                int customer_id = resultSetExercise.getInt("customer_id");
+
                 boolean effective = resultSetExercise.getBoolean("effective");
                 // Create a new Exercise object with the retrieved fields
-                Exercise exerciseData = new Exercise(track_data_ai_id, activity_level, age, gender,bmi, course, training_goals, training_history, customer_id, effective);
+                Exercise exerciseData = new Exercise(track_data_ai_id, activity_level, age, gender,bmi, course, training_goals, training_history, effective);
                 exerciseList.add(exerciseData);
             }
             //Course

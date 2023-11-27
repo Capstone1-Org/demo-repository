@@ -13,7 +13,7 @@ public class Exercise {
     private Course course;
     private String training_goals;
     private String training_history;
-    private int customer_id;
+
     private boolean effective;
 
 
@@ -24,7 +24,7 @@ public class Exercise {
     public Exercise() {
     }
 
-    public Exercise(int track_data_ai_id, String activity_level, int age, String gender, double bmi, Course course, String training_goals, String training_history, int customer_id, boolean effective) {
+    public Exercise(int track_data_ai_id, String activity_level, int age, String gender, double bmi, Course course, String training_goals, String training_history, boolean effective) {
         this.track_data_ai_id = track_data_ai_id;
         this.activity_level = activity_level;
         this.age = age;
@@ -33,7 +33,7 @@ public class Exercise {
         this.course = course; // Changed
         this.training_goals = training_goals;
         this.training_history = training_history;
-        this.customer_id = customer_id;
+
         this.effective = effective;
     }
 
@@ -118,14 +118,6 @@ public class Exercise {
         this.training_history = training_history;
     }
 
-    public int getCustomer_id() {
-        return customer_id;
-    }
-
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
-    }
-
     public boolean isEffective() {
         return effective;
     }
@@ -145,7 +137,7 @@ public class Exercise {
                 ", suggested_exercises='" + course + '\'' +
                 ", training_goals='" + training_goals + '\'' +
                 ", training_history='" + training_history + '\'' +
-                ", customer_id=" + customer_id +
+
                 ", effective=" + effective +
                 '}';
     }
@@ -167,8 +159,6 @@ public class Exercise {
                 return getTraining_goals();
             case "training_history":
                 return getTraining_history();
-            case "customer_id":
-                return getCustomer_id();
             case "effective":
                 return isEffective();
             default:
