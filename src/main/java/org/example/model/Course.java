@@ -3,16 +3,16 @@ package org.example.model;
 public class Course {
     private int course_id;
     private String course_name;
-    private String course_type_id;
     private String description;
     private String duration;
     private String image;
+    private String course_type_id;
     private int customer_id;
 
-    public Course(int course_id, String course_name, String course_type, String description, String duration, String image, int customer_id) {
+    public Course(int course_id, String course_name, String course_type_id, String description, String duration, String image, int customer_id) {
         this.course_id = course_id;
         this.course_name = course_name;
-        this.course_type_id = course_type;
+        this.course_type_id = course_type_id;
         this.description = description;
         this.duration = duration;
         this.image = image;
@@ -35,12 +35,12 @@ public class Course {
         this.course_name = course_name;
     }
 
-    public String getCourse_type() {
-        return course_type;
+    public String getCourse_type_id() {
+        return course_type_id;
     }
 
-    public void setCourse_type(String course_type) {
-        this.course_type = course_type;
+    public void setCourse_type_id(String course_type_id) {
+        this.course_type_id = course_type_id;
     }
 
     public String getDescription() {

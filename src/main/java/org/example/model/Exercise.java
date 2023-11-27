@@ -1,7 +1,6 @@
 package org.example.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Exercise {
     private ArrayList<String> mValues;
