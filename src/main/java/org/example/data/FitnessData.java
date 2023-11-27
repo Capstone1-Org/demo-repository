@@ -10,7 +10,7 @@ import java.util.List;
 public class FitnessData {
     String jdbcUrl = "jdbc:mysql://127.0.0.1:3306/wellness_navigator_gym";
     String username = "root";
-    String password = "123456";
+    String password = "123456@Abc";
 
     public List<Exercise> FitnessRecord() {
         try {

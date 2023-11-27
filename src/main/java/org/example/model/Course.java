@@ -3,7 +3,7 @@ package org.example.model;
 public class Course {
     private int course_id;
     private String course_name;
-    private String course_type;
+    private String course_type_id;
     private String description;
     private String duration;
     private String image;
@@ -12,7 +12,7 @@ public class Course {
     public Course(int course_id, String course_name, String course_type, String description, String duration, String image, int customer_id) {
         this.course_id = course_id;
         this.course_name = course_name;
-        this.course_type = course_type;
+        this.course_type_id = course_type;
         this.description = description;
         this.duration = duration;
         this.image = image;
