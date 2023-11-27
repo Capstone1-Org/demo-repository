@@ -59,7 +59,7 @@ public class FitnessData {
             // Tạo đối tượng Course với tất cả thuộc tính từ bảng Course
             int course_id = resultSet.getInt("course_id");
             String course_name = resultSet.getString("course_name");
-            String course_type = resultSet.getString("course_type");
+            String course_type = resultSet.getString("course_type_id");
             String description = resultSet.getString("description");
             String duration = resultSet.getString("duration");
             String image = resultSet.getString("image");
