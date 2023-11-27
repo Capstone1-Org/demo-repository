@@ -37,12 +37,13 @@ public class DecisionTree {
 
 
 
-    // Tính toán entropy cho một subset cụ thể của dữ liệu
+    // Đếm số lượng mục tiêu tích cực hoặc tiêu cực trong một danh sách cụ thể của Exercise I(S)
     private double calculateEntropyForWholeDataSet() {
         int positiveCount = countEffective(exerciseData, true);
         int negativeCount = exerciseData.size() - positiveCount;
         return calculateEntropy(positiveCount, negativeCount);
     }
+
 
     // Tính toán entropy cho một subset cụ thể của dữ liệu
     private double calculateEntropyForSubset(List<Exercise> subset) {
@@ -51,8 +52,6 @@ public class DecisionTree {
         return calculateEntropy(positiveCount, negativeCount);
     }
 
-
-    // Đếm số lượng mục tiêu tích cực hoặc tiêu cực trong một danh sách cụ thể của Exercise
     private int countEffective(List<Exercise> dataList, boolean effective) {
         int count = 0;
         for (Exercise data : dataList) {
@@ -65,12 +64,16 @@ public class DecisionTree {
 
     // tính toán entropy dựa trên số lượng ví dụ dương và âm
     private double calculateEntropy(int positiveCount, int negativeCount) {
+        if (positiveCount < 0 || negativeCount < 0) {
+            throw new IllegalArgumentException("Count values cannot be negative.");
+        }
         if (positiveCount == 0 || negativeCount == 0) {
             return 0.0; // Không có entropy nếu không có sự đa dạng
         }
         int totalCount = positiveCount + negativeCount;
         return -calculateEntropyPart(positiveCount, totalCount) - calculateEntropyPart(negativeCount, totalCount);
     }
+
 
     private double calculateEntropyPart(int count, int totalCount) {
         double probability = (double) count / totalCount;

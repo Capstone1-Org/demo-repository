@@ -1,6 +1,7 @@
 package org.example.model;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TreeNode {
@@ -9,7 +10,7 @@ public class TreeNode {
     private boolean isLeaf; // Kiểm tra xem nút có phải là lá không
     private boolean classification; // Kết quả phân loại (true hoặc false) nếu nút là lá
     private double gainRatio; // Thêm thuộc tính cho Gain Ratio
-    private String recommendation;
+    private List<Course> recommendation;
 
     public TreeNode(String attributeName) {
         this.attributeName = attributeName;
@@ -58,12 +59,12 @@ public class TreeNode {
     public void setGainRatio(double gainRatio) {
         this.gainRatio = gainRatio;
     }
-    public String getRecommendation() {
+    public List<Course> getRecommendation() {
         return recommendation;
     }
 
     // Phương thức setter cho recommendation
-    public void setRecommendation(String recommendation) {
+    public void setRecommendation(List<Course> recommendation) {
         this.recommendation = recommendation;
     }
 }

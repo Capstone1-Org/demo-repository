@@ -1,13 +1,15 @@
     package org.example.service;
 
+    import org.example.model.Course;
     import org.example.model.Exercise;
     import org.example.model.TreeNode;
 
     import java.util.*;
+    import java.util.stream.Collectors;
 
     public class BuildDecisionTree {
 
-        private static DecisionTree decisionTree;
+        private DecisionTree decisionTree;
 
         public BuildDecisionTree(List<Exercise> exercises) {
             this.decisionTree = new DecisionTree(exercises);
@@ -53,9 +55,6 @@
             return node;
         }
 
-
-
-
         private TreeNode createLeafNode(List<Exercise> data) {
             TreeNode leafNode = new TreeNode(null);
             leafNode.setLeaf(true);
@@ -65,24 +64,27 @@
             leafNode.setClassification(classification);
 
             // Tạo đề xuất dựa trên dữ liệu
-            String recommendation = createRecommendation(data);
+            List<Course> recommendation = createRecommendation(data);
             leafNode.setRecommendation(recommendation);
 
             return leafNode;
         }
 
-        private String createRecommendation(List<Exercise> data) {
-            // Xác định đề xuất dựa trên dữ liệu của các bài tập
-            // Ví dụ: đề xuất loại bài tập phổ biến nhất trong dữ liệu
-            Map<String, Integer> exerciseCount = new HashMap<>();
+        private List<Course> createRecommendation(List<Exercise> data) {
+            Map<Integer, Course> uniqueCoursesMap = new HashMap<>();
+
             for (Exercise exercise : data) {
-                String exerciseType = exercise.getSuggested_exercises(); // Giả sử có phương thức này
-                exerciseCount.put(exerciseType, exerciseCount.getOrDefault(exerciseType, 0) + 1);
+                if (exercise.isEffective()) {
+                    Course course = exercise.getCourse();
+                    uniqueCoursesMap.putIfAbsent(course.getCourse_id(), course);
+                }
             }
 
-            return Collections.max(exerciseCount.entrySet(), Map.Entry.comparingByValue()).getKey();
+            // Trả về danh sách các khóa học duy nhất, giới hạn tối đa 3 khóa học
+            return new ArrayList<>(uniqueCoursesMap.values()).stream()
+                    .limit(3) // Giới hạn số lượng khóa học
+                    .collect(Collectors.toList());
         }
-
 
         private  boolean determineMajorityClassification(List<Exercise> data) {
             if (data.isEmpty()) {
@@ -128,7 +130,6 @@
             if (node == null) {
                 return;
             }
-
             // In thông tin của nút hiện tại
             System.out.println(indent + "Node: " + (node.getAttributeName() == null ? "Leaf" : node.getAttributeName()));
             if (node.isLeaf()) {

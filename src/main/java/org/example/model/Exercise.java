@@ -10,7 +10,7 @@ public class Exercise {
     private int age;
     private String gender;
     private double bmi;
-    private String suggested_exercises;
+    private Course course;
     private String training_goals;
     private String training_history;
     private int customer_id;
@@ -24,13 +24,13 @@ public class Exercise {
     public Exercise() {
     }
 
-    public Exercise(int track_data_ai_id, String activity_level, int age, String gender, double bmi, String suggested_exercises, String training_goals, String training_history, int customer_id, boolean effective) {
+    public Exercise(int track_data_ai_id, String activity_level, int age, String gender, double bmi, Course course, String training_goals, String training_history, int customer_id, boolean effective) {
         this.track_data_ai_id = track_data_ai_id;
         this.activity_level = activity_level;
         this.age = age;
         this.gender = gender;
         this.bmi = bmi;
-        this.suggested_exercises = suggested_exercises;
+        this.course = course; // Changed
         this.training_goals = training_goals;
         this.training_history = training_history;
         this.customer_id = customer_id;
@@ -94,12 +94,12 @@ public class Exercise {
         this.bmi = bmi;
     }
 
-    public String getSuggested_exercises() {
-        return suggested_exercises;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setSuggested_exercises(String suggested_exercises) {
-        this.suggested_exercises = suggested_exercises;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     public String getTraining_goals() {
@@ -142,7 +142,7 @@ public class Exercise {
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
                 ", bmi=" + bmi+
-                ", suggested_exercises='" + suggested_exercises + '\'' +
+                ", suggested_exercises='" + course + '\'' +
                 ", training_goals='" + training_goals + '\'' +
                 ", training_history='" + training_history + '\'' +
                 ", customer_id=" + customer_id +
@@ -162,7 +162,7 @@ public class Exercise {
             case "bmi":
                 return getBmi();
             case "suggested_exercises":
-                return getSuggested_exercises();
+                return getCourse();
             case "training_goals":
                 return getTraining_goals();
             case "training_history":
